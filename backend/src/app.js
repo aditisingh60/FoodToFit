@@ -5,6 +5,7 @@ const morgan = require('morgan')
 const rateLimit = require('express-rate-limit')
 
 const authRoutes = require('./routes/auth.routes')
+const userRoutes = require('./routes/user.routes')
 
 const app = express()
 
@@ -33,6 +34,7 @@ if (process.env.NODE_ENV === 'development') {
 
 // ── Routes ────────────────────────────────────────
 app.use('/api/auth', authLimiter, authRoutes)
+app.use('/api/user', userRoutes)
 
 // ── Health check ──────────────────────────────────
 app.get('/health', (req, res) => {
