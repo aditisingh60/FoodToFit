@@ -21,11 +21,11 @@ app.use(cors({
 }))
 
 // ── Rate limit on auth endpoints (prevent brute force)
-const authLimiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 20,                   // max 20 requests per window
-    message: { error: 'Too many attempts. Please try again in 15 minutes.' }
-})
+// const authLimiter = rateLimit({
+//     windowMs: 15 * 60 * 1000, // 15 minutes
+//     max: 20,                   // max 20 requests per window
+//     message: { error: 'Too many attempts. Please try again in 15 minutes.' }
+// })
 
 // ── Body parsing ──────────────────────────────────
 app.use(express.json())
