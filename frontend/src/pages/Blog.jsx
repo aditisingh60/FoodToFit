@@ -245,11 +245,19 @@ export default function Blog() {
       <Navbar />
 
       {/* Banner / Parallax Header */}
-      <section className="relative overflow-hidden bg-brand-900 py-36 sm:py-44 text-center text-white shadow-inner">
-        <div className="absolute inset-0 z-0 bg-gradient-to-br from-brand-900 via-brand-700 to-brand-600 opacity-95" />
-        <div className="absolute inset-0 z-0 opacity-35 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-brand-300/40 via-transparent to-transparent" />
-        <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-brand-400/20 blur-3xl animate-pulse" style={{ animationDuration: '8s' }} />
-        <div className="absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-brand-300/20 blur-3xl animate-pulse" style={{ animationDuration: '12s' }} />
+      <section className="relative overflow-hidden py-36 sm:py-44 text-center text-white shadow-inner">
+        {/* Background Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 h-full w-full object-cover z-0"
+        >
+          <source src="/blog_banner_video.mp4" type="video/mp4" />
+        </video>
+        {/* Dark overlay to ensure text contrast */}
+        <div className="absolute inset-0 z-0 bg-gradient-to-b from-slate-900/65 via-slate-950/75 to-slate-900/65 backdrop-blur-[1px]" />
 
         <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6">
           <span className="rounded-full bg-white/15 px-5 py-2 text-xs font-extrabold uppercase tracking-widest text-brand-100 ring-1 ring-white/20 backdrop-blur-md">
