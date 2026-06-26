@@ -87,9 +87,7 @@ export default function Landing() {
       <section className="relative px-6 py-12 md:py-20 lg:py-24 max-w-6xl mx-auto w-full grid md:grid-cols-12 gap-12 items-center flex-1">
         {/* Hero Copy (Left) */}
         <div className="md:col-span-6 space-y-6 text-left">
-          <span className="rounded-full bg-brand-50 border border-brand-100 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-700">
-            📊 Complete Calorie & Macro Tracker
-          </span>
+
           <h1 className="text-4xl sm:text-5xl font-black text-slate-900 leading-tight tracking-tight">
             <span className="block animate-hero-title-1">Eat Smarter.</span>
             <span className="block animate-hero-title-2">
