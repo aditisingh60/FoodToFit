@@ -343,7 +343,7 @@ export default function Tracker() {
                       key={type}
                       className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:border-brand-200"
                     >
-                      <div className="flex items-center justify-between bg-slate-50 px-6 py-4 border-b border-slate-100">
+                      <div className="flex flex-wrap items-center justify-between gap-4 bg-slate-50 px-4 sm:px-6 py-4 border-b border-slate-100">
                         <div className="flex items-center gap-2">
                           <span className="font-semibold text-slate-800">{type}</span>
                         </div>
@@ -651,13 +651,14 @@ export default function Tracker() {
                   </div>
                 </div>
 
-                <div className="relative flex h-56 w-full items-end gap-2 border-b border-slate-105 pb-2">
-                  {/* Y Axis reference lines */}
-                  <div className="absolute left-0 top-0 bottom-2 right-0 flex flex-col justify-between pointer-events-none">
-                    <div className="w-full border-t border-slate-100 text-[10px] text-slate-355 pt-1">100% Target</div>
-                    <div className="w-full border-t border-slate-100/50 text-[10px] text-slate-300 pt-1">50% Target</div>
-                    <div className="w-full border-t border-slate-100/20 text-[10px] text-slate-300 pt-1">0%</div>
-                  </div>
+                <div className="overflow-x-auto pb-2">
+                  <div className="relative flex h-56 w-full min-w-[450px] items-end gap-2 border-b border-slate-105 pb-2">
+                    {/* Y Axis reference lines */}
+                    <div className="absolute left-0 top-0 bottom-2 right-0 flex flex-col justify-between pointer-events-none">
+                      <div className="w-full border-t border-slate-100 text-[10px] text-slate-355 pt-1">100% Target</div>
+                      <div className="w-full border-t border-slate-100/50 text-[10px] text-slate-300 pt-1">50% Target</div>
+                      <div className="w-full border-t border-slate-100/20 text-[10px] text-slate-300 pt-1">0%</div>
+                    </div>
 
                   {/* SVG Line Graph */}
                   <svg 
@@ -726,6 +727,7 @@ export default function Tracker() {
                       )
                     })}
                   </div>
+                </div>
                 </div>
               </div>
             )}
@@ -797,7 +799,7 @@ export default function Tracker() {
                         <button
                           key={food.id}
                           onClick={() => handleSelectFood(food)}
-                          className="w-full text-left px-4 py-3 hover:bg-brand-50/50 flex justify-between items-center transition"
+                          className="w-full text-left px-4 py-3 hover:bg-brand-50/50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-0 transition"
                         >
                           <div>
                             <span className="font-semibold text-slate-800 block">{food.name}</span>
