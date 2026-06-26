@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { saveOnboarding } from '../api/user.api'
 import Button from '../components/ui/Button'
 import Input from '../components/ui/Input'
@@ -117,10 +117,10 @@ export default function Onboarding() {
       </button>
       <div className="mx-auto max-w-2xl">
         <div className="mb-8 text-center">
-          <div className="mb-3 inline-flex items-center gap-2">
+          <Link to="/" className="mb-3 inline-flex items-center gap-2 hover:opacity-90 transition">
             <span className="text-2xl">🥗</span>
             <span className="text-lg font-bold text-slate-900">FoodToFit</span>
-          </div>
+          </Link>
           <h1 className="text-2xl font-bold text-slate-900">
             Hi {user?.name?.split(' ')[0] || 'there'}, let&apos;s personalize your plan
           </h1>

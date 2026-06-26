@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../store/authStore'
 import Button from '../components/ui/Button'
 
@@ -34,12 +34,12 @@ export default function Landing() {
       {/* Header */}
       <header className="border-b border-slate-200/50 bg-white/80 backdrop-blur-md sticky top-0 z-50">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-          <div className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2 hover:opacity-90 transition">
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-600">
               <span className="text-lg">🥗</span>
             </div>
             <span className="text-lg font-bold text-slate-900">FoodToFit</span>
-          </div>
+          </Link>
 
           <nav className="hidden md:flex gap-6">
             <a href="#features" className="text-sm font-semibold text-slate-500 hover:text-slate-800 transition">
@@ -89,8 +89,10 @@ export default function Landing() {
             📊 Complete Calorie & Macro Tracker
           </span>
           <h1 className="text-4xl sm:text-5xl font-black text-slate-900 leading-tight tracking-tight">
-            Eat Smarter. <br />
-            Reach Your <span className="text-brand-600">Fitness Goals</span>.
+            <span className="block animate-hero-title-1">Eat Smarter.</span>
+            <span className="block animate-hero-title-2">
+              Reach Your <span className="text-brand-600">Fitness Goals</span>.
+            </span>
           </h1>
           <p className="text-base sm:text-lg text-slate-500 leading-relaxed">
             FoodToFit automatically calculates your custom BMI, BMR, TDEE, and daily calorie targets. Track meals, log water intake, and build healthy habits with our science-backed tools.
@@ -256,46 +258,63 @@ export default function Landing() {
       </section>
 
       {/* Features Grid Section */}
-      <section id="features" className="bg-white border-t border-b border-slate-200/50 py-20 px-6">
-        <div className="max-w-6xl mx-auto text-center">
+      <section id="features" className="bg-white border-t border-b border-slate-200/50 py-20 overflow-hidden">
+        <div className="max-w-6xl mx-auto text-center px-6">
           <span className="text-xs font-bold tracking-widest text-brand-600 uppercase">Features Breakdown</span>
           <h2 className="text-3xl font-extrabold text-slate-950 mt-2">Everything You Need to Fit</h2>
           <p className="text-slate-500 mt-2 max-w-xl mx-auto text-sm">
             Our platform provides clean science-backed utilities to manage your food dairy and nutrition schedule.
           </p>
+        </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-            {[
+        {/* Infinite Marquee Ticker */}
+        <div className="relative mt-16 w-full overflow-hidden marquee-mask">
+          <div className="animate-marquee-ltr flex gap-8 py-4">
+            {[...Array(2)].flatMap(() => [
               {
-                icon: '⚖️',
+                image: '/feature_metrics.png',
                 title: 'Body Metrics calculator',
                 desc: 'Calculate customized BMI, BMR, and TDEE based on age, weight, and fitness targets.',
               },
               {
-                icon: '🍳',
+                image: '/feature_diary.png',
                 title: 'Calorie Diary Log',
                 desc: 'Easily query foods and log meals. View summaries, carbs, fats, and protein details.',
               },
               {
-                icon: '💧',
+                image: '/feature_water.png',
                 title: 'Water Hydration Log',
                 desc: 'Log daily water intake using glass or bottle size presets to hit your 2L target.',
               },
               {
-                icon: '📈',
+                image: '/feature_trends.png',
                 title: 'Weekly Intake Trends',
                 desc: 'Check calorie and protein progress charts across the week to keep motivation high.',
               },
-            ].map((feature, i) => (
+            ]).map((feature, i) => (
               <div
                 key={i}
-                className="group border border-slate-100 rounded-3xl bg-slate-50/50 p-6 text-left hover:border-brand-100 hover:bg-white hover:shadow-xl hover:shadow-slate-100/60 transition-all duration-300"
+                className="group w-80 shrink-0 border border-slate-200/60 rounded-3xl bg-white overflow-hidden hover:border-brand-100 hover:shadow-2xl hover:shadow-brand-100/10 transition-all duration-300 flex flex-col"
               >
-                <span className="text-3xl bg-white w-12 h-12 rounded-2xl flex items-center justify-center shadow-sm group-hover:bg-brand-50 transition">
-                  {feature.icon}
-                </span>
-                <h3 className="font-extrabold text-slate-900 mt-5 text-base">{feature.title}</h3>
-                <p className="text-slate-500 text-xs mt-2.5 leading-relaxed">{feature.desc}</p>
+                {/* Image Container */}
+                <div className="relative aspect-video w-full overflow-hidden bg-slate-50 border-b border-slate-100">
+                  <img
+                    src={feature.image}
+                    alt={feature.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+                {/* Content Container */}
+                <div className="p-6 text-left flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="font-extrabold text-slate-900 text-base group-hover:text-brand-650 transition-colors">
+                      {feature.title}
+                    </h3>
+                    <p className="text-slate-500 text-xs mt-2.5 leading-relaxed">
+                      {feature.desc}
+                    </p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>

@@ -2,6 +2,15 @@ import { useEffect, useRef, useState } from 'react'
 import Footer from '../components/layout/Footer'
 import Navbar from '../components/layout/Navbar'
 
+const IMAGES = [
+  '/landing_food_1.png',
+  '/landing_food_2.png',
+  '/landing_food_3.png',
+  '/landing_food_4.png',
+  '/landing_food_5.png',
+  '/landing_food_6.png',
+]
+
 const BLOGS = [
   {
     id: 1,
@@ -220,6 +229,15 @@ export default function Blog() {
   const [activeBlog, setActiveBlog] = useState(null)
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [activeIndex, setActiveIndex] = useState(0)
+  const [activeSlide, setActiveSlide] = useState(0)
+
+  // Autoplay slider every 4 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % IMAGES.length)
+    }, 4000)
+    return () => clearInterval(timer)
+  }, [])
 
   const nextSlide = () => {
     setActiveIndex((prev) => (prev + 1) % REVIEWS.length)
@@ -246,18 +264,20 @@ export default function Blog() {
 
       {/* Banner / Parallax Header */}
       <section className="relative overflow-hidden py-36 sm:py-44 text-center text-white shadow-inner">
-        {/* Background Video */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 h-full w-full object-cover z-0"
-        >
-          <source src="/blog_banner_video.mp4" type="video/mp4" />
-        </video>
-        {/* Dark overlay to ensure text contrast */}
-        <div className="absolute inset-0 z-0 bg-gradient-to-b from-slate-900/65 via-slate-950/75 to-slate-900/65 backdrop-blur-[1px]" />
+        {/* Background slider */}
+        <div className="absolute inset-0 z-0 select-none">
+          {IMAGES.map((img, i) => (
+            <div
+              key={img}
+              className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
+                i === activeSlide ? 'opacity-90' : 'opacity-0'
+              }`}
+              style={{ backgroundImage: `url(${img})` }}
+            />
+          ))}
+          {/* Dark overlay to ensure text contrast */}
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/65 via-slate-950/75 to-slate-900/65 backdrop-blur-[1px]" />
+        </div>
 
         <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6">
           <span className="rounded-full bg-white/15 px-5 py-2 text-xs font-extrabold uppercase tracking-widest text-brand-100 ring-1 ring-white/20 backdrop-blur-md">

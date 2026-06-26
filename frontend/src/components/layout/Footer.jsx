@@ -8,12 +8,12 @@ export default function Footer() {
         <div className="grid gap-12 sm:grid-cols-2 md:grid-cols-5">
           {/* Logo & App Info */}
           <div className="space-y-6 md:col-span-1">
-            <div className="flex items-center gap-2">
+            <Link to="/" className="flex items-center gap-2 hover:opacity-90 transition">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-600">
                 <span className="text-base text-white">🥗</span>
               </div>
               <span className="text-lg font-bold text-slate-900 tracking-tight">FoodToFit</span>
-            </div>
+            </Link>
             
             {/* Store Buttons */}
             <div className="space-y-2">

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { checkServerHealth, login, register } from '../api/auth.api'
 import Button from '../components/ui/Button'
 import Input from '../components/ui/Input'
@@ -125,12 +125,12 @@ const Login = () => {
         <div className="absolute -bottom-16 -right-16 h-96 w-96 rounded-full bg-emerald-300/20 blur-3xl" />
 
         <div className="relative z-10 flex flex-1 flex-col justify-center px-14 xl:px-20">
-          <div className="mb-8 inline-flex items-center gap-2.5">
+          <Link to="/" className="mb-8 inline-flex items-center gap-2.5 hover:opacity-90 transition">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/20 backdrop-blur-sm">
               <span className="text-xl">🥗</span>
             </div>
             <span className="text-xl font-bold tracking-tight text-white">FoodToFit</span>
-          </div>
+          </Link>
 
           <h1 className="max-w-md text-4xl font-bold leading-tight tracking-tight text-white xl:text-5xl">
             Eat smarter.
@@ -167,12 +167,12 @@ const Login = () => {
       <div className="flex w-full flex-col items-center justify-center px-6 py-12 lg:w-1/2">
         <div className="w-full max-w-md">
           {/* Mobile logo */}
-          <div className="mb-8 flex items-center justify-center gap-2 lg:hidden">
+          <Link to="/" className="mb-8 flex items-center justify-center gap-2 lg:hidden hover:opacity-90 transition">
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-600">
               <span className="text-lg">🥗</span>
             </div>
             <span className="text-lg font-bold text-slate-900">FoodToFit</span>
-          </div>
+          </Link>
 
           <div className="rounded-2xl border border-slate-200/80 bg-white p-8 shadow-xl shadow-slate-200/60">
             <div className="mb-8 text-center">
